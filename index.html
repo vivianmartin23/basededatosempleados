@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dotación Easy Punto S.A.S. – Diciembre 2026</title>
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<header><h1>Dotación Easy Punto S.A.S. – Diciembre 2026</h1>
+<p>Filtra por ciudad, género, tipo de personal o talla; las cifras y los gráficos se actualizan al instante.</p></header>
+<main>
+<div class="bar">
+<label>Ciudad<select id="fc"></select></label>
+<label>Género<select id="fg"></select></label>
+<label>Tipo de personal<select id="ft"></select></label>
+<label>Talla de camisa<select id="fz"></select></label>
+<button id="rs" type="button">Quitar filtros</button>
+<div id="cnt" aria-live="polite"></div></div>
+<div class="kp" id="kp"></div>
+<div class="g">
+<section class="c"><h2>Colaboradores por ciudad</h2><div id="ch1"></div><p class="nt">Toca una ciudad para filtrar.</p></section>
+<section class="c"><h2>Camisas por talla y color</h2><div class="lg"><span><s style="background:var(--or)"></s>Naranja</span><span><s style="background:var(--bl)"></s>Azul</span><span><s style="background:var(--gr)"></s>Valet (por confirmar)</span></div><div id="ch2"></div></section>
+<section class="c"><h2>Género registrado</h2><div id="ch3"></div></section>
+</div>
+<div class="w"><table><caption style="text-align:left;font-weight:700;padding:0 0 8px">Ciudad por talla de camisa</caption><thead id="th"></thead><tbody id="tb"></tbody><tfoot id="tf"></tfoot></table></div>
+<div class="w"><table><caption style="text-align:left;font-weight:700;padding:0 0 8px">Líderes, supervisores, director operativo y valet parking</caption><thead><tr><th>Nombre</th><th>Ciudad</th><th>Cargo</th><th>Camisa</th><th>Talla camisa</th><th>Talla pantalón</th></tr></thead><tbody id="sp"></tbody></table></div>
+<p class="nt">Líderes, supervisores y director operativo usan camisa azul; el personal general usa camisa naranja. Valet parking queda aparte hasta confirmar su uniforme. El pantalón marrón solo está confirmado para el personal general. Cantidades según los registros, con 1 camisa por colaborador.</p>
+</main>
+<script>
+const D=[["Bogota","F","M",16,"V","Ulvia Piedad Silva Roncancio"],["Bogota","F","S",8,"G",""],["Bogota","F","S",32,"G",""],["Bogota","M","L",34,"G",""],["Bogota","M","M",30,"G",""],["Cali","M","S",30,"G",""],["Bogota","M","M",12,"G",""],["Bogota","M","L",32,"V","Lazaro Calderon Urrego"],["Cali","M","M",32,"G",""],["Cali","F","S",38,"G",""],["Cali","M","XXL",38,"G",""],["Bogota","F","L",16,"V","Nelly Moreno Lopez"],["Bogota","F","S",28,"G",""],["Bogota","F","S",8,"G",""],["Cali","M","XL",38,"G",""],["Bogota","M","M",32,"L","Manuel Alejandro Ramirez Leguizamon"],["Bogota","M","XL",38,"G",""],["Bogota","F","S",10,"G",""],["Bogota","F","XL",18,"G",""],["Neiva","F","S",12,"G",""],["Bogota","M","M",34,"V","Pedro Ignacio Pacheco Baquero"],["Barranquilla","M","M",34,"G",""],["Cali","M","L",34,"G",""],["Cali","M","M",30,"G",""],["Barranquilla","M","XL",34,"G",""],["Ibague","F","M",36,"G",""],["Bogota","F","S",12,"G",""],["Cali","M","L",38,"G",""],["Cali","M","M",32,"G",""],["Cali","M","L",36,"G",""],["Bogota","M","L",34,"G",""],["Barranquilla","M","XL",34,"L","Habib Eduardo Guerrero Vargas"],["Ibague","M","XXL",38,"G",""],["Ibague","M","M",32,"G",""],["Cali","F","L",34,"G",""],["Cali","F","S",14,"G",""],["Bogota","M","XL",36,"S","Oscar Ivan Barrera Tolosa"],["Cali","M","M",32,"D","Antonio Jose Madrid Giraldo"],["Manizales","F","S",12,"G",""],["Bogota","M","L",34,"G",""],["Barranquilla","F","S",14,"G",""],["Ibague","F","M",38,"G",""],["Barranquilla","M","XL",40,"G",""],["Bogota","M","M",32,"G",""],["Barranquilla","F","L",30,"G",""],["Bogota","M","M",30,"G",""],["Cali","M","M",30,"G",""],["Bogota","F","M",12,"G",""],["Bogota","F","S",12,"G",""],["Barranquilla","M","L",34,"G",""],["Barranquilla","M","L",32,"G",""],["Bogota","M","M",30,"G",""],["Bogota","M","S",30,"G",""],["Cali","F","S",34,"G",""],["Bogota","M","L",34,"G",""],["Bogota","M","M",30,"V","Abel Antonio Sanchez Osorio"],["Bogota","M","L",32,"G",""],["Cali","M","S",32,"G",""],["Bogota","M","M",30,"G",""],["Cali","F","M",16,"G",""],["Neiva","F","S",8,"G",""],["Barranquilla","M","L",34,"L","Julio Cesar Herrera De La Hoz"],["Barranquilla","F","S",10,"L","Karelis Yuranis Carmona Mercado"],["Barranquilla","M","L",36,"G",""],["Cali","M","M",32,"G",""],["Cali","F","S",32,"G",""],["Barranquilla","M","L",34,"G",""],["Cali","M","M",34,"G",""],["Cali","F","M",34,"G",""],["Ibague","M","M",32,"G",""],["Cali","M","XXL",40,"G",""],["Bogota","F","S",8,"G",""],["Bogota","M","L",34,"L","Alvaro Ivan Torres Castiblanco"],["Bogota","M","XL",36,"V","Bryan Snaider Lopez Cruz"],["Manizales","F","M",12,"G",""],["Bogota","M","M",32,"G",""],["Bogota","F","M",14,"G",""],["Barranquilla","M","M",28,"G",""],["Barranquilla","M","S",32,"G",""],["Cali","M","XL",36,"G",""],["Barranquilla","F","S",8,"L","Therry Janneth Barroso Rios"],["Bogota","M","M",32,"V","Edimer Bautista Sanchez"],["Barranquilla","M","M",34,"G",""],["Barranquilla","F","M",32,"G",""],["Barranquilla","M","L",34,"G",""],["Barranquilla","M","S",30,"G",""],["Barranquilla","M","M",30,"G",""],["Cali","F","XXL",36,"G",""],["Barranquilla","M","S",30,"G",""],["Cali","F","S",34,"G",""],["Barranquilla","M","M",32,"G",""],["Barranquilla","M","L",36,"G",""],["Barranquilla","M","L",36,"G",""],["Barranquilla","M","M",32,"G",""],["Bogota","F","M",10,"G",""],["Bogota","M","XL",34,"G",""],["Medellin","M","S",28,"G",""],["Cali","M","L",34,"G",""],["Bogota","M","M",32,"G",""],["Cali","M","L",32,"G",""],["Barranquilla","M","M",32,"L","Jaime Andres Villalba De La Hoz"],["Barranquilla","F","XXL",46,"G",""],["Barranquilla","M","S",32,"L","Gabriel De La Rosa Santacruz"],["Barranquilla","M","M",30,"G",""],["Barranquilla","M","M",32,"G",""],["Barranquilla","M","L",34,"G",""],["Barranquilla","M","L",36,"G",""],["Barranquilla","M","XXXL",46,"G",""],["Bogota","M","M",32,"G",""],["Bogota","M","M",34,"G",""],["Barranquilla","M","XL",40,"G",""],["Barranquilla","M","XL",38,"G",""],["Cali","F","S",12,"G",""],["Medellin","M","M",32,"G",""],["Bogota","M","L",34,"G",""],["Barranquilla","F","S",8,"G",""],["Barranquilla","M","L",34,"L","Andres Felipe Ramirez Roy"],["Pereira","F","L",40,"G",""],["Pereira","F","S",12,"G",""],["Cali","M","M",34,"G",""],["Barranquilla","M","M",32,"G",""],["Barranquilla","F","M",16,"G",""],["Bogota","M","S",28,"G",""],["Bogota","M","L",36,"G",""],["Barranquilla","M","XL",38,"G",""],["Bogota","F","S",16,"G",""],["Barranquilla","M","M",32,"G",""],["Barranquilla","F","S",12,"G",""],["Bogota","F","M",12,"G",""],["Bogota","F","S",10,"G",""],["Bogota","F","M",12,"G",""],["Cali","F","S",38,"G",""],["Barranquilla","M","L",36,"G",""],["Bogota","F","M",14,"G",""],["Bogota","F","XL",18,"G",""],["Bogota","F","S",10,"G",""],["Cali","F","S",10,"G",""],["Barranquilla","M","S",30,"G",""],["Barranquilla","M","XL",34,"G",""],["Barranquilla","M","XL",38,"G",""],["Barranquilla","M","L",34,"G",""],["Bogota","M","XL",40,"G",""],["Villavicencio","M","L",32,"G",""],["Bogota","F","S",12,"G",""],["Bogota","M","L",34,"G",""],["Bogota","F","M",34,"G",""],["Bogota","F","S",16,"G",""],["Barranquilla","M","XL",36,"G",""],["Cali","M","XL",36,"G",""],["Cali","M","L",34,"G",""],["Bogota","F","S",12,"G",""],["Barranquilla","M","M",32,"G",""],["Cali","M","L",10,"G",""],["Bogota","M","M",34,"V","Jose Jhobani Rubiano Rivera"],["Cali","M","M",34,"G",""],["Bogota","M","M",34,"V","Jilmar Andres Morales Pinzon"],["Barranquilla","F","S",12,"G",""],["Barranquilla","M","M",33,"G",""],["Barranquilla","M","XXL",32,"G",""],["Barranquilla","F","S",14,"G",""],["Barranquilla","F","M",16,"G",""],["Bogota","M","S",32,"G",""],["Monteria","F","S",12,"G",""],["Monteria","M","S",32,"L","Juan Jose Gomez Capacho"],["Monteria","M","XXL",44,"G",""],["Monteria","M","L",34,"G",""],["Monteria","M","M",38,"G",""],["Monteria","M","L",36,"G",""],["Villavicencio","M","L",34,"G",""],["Barranquilla","M","S",32,"G",""],["Cartagena","M","XL",32,"G",""],["Bogota","M","L",34,"G",""],["Bogota","F","S",14,"G",""],["Barranquilla","F","S",12,"G",""],["Monteria","F","S",12,"G",""],["Bogota","M","M",32,"G",""],["Monteria","M","M",32,"G",""],["Bogota","F","M",14,"G",""],["Bogota","M","M",32,"G",""],["Bogota","F","S",16,"G",""]];
+const T={G:"Personal general",L:"Líder",S:"Supervisor",D:"Director operativo",V:"Valet parking"};
+const SZ=["S","M","L","XL","XXL","XXXL"];
+const COL={G:"var(--or)",L:"var(--bl)",S:"var(--bl)",D:"var(--bl)",V:"var(--gr)"};
+const CN={G:"Naranja",L:"Azul",S:"Azul",D:"Azul",V:"Por confirmar"};
+const $=i=>document.getElementById(i);
+const grp=t=>t==="G"?"G":t==="V"?"V":"B";
+const cities=[...new Set(D.map(r=>r[0]))].sort();
+function opts(id,all,list){$(id).innerHTML='<option value="">'+all+'</option>'+list.map(([v,l])=>'<option value="'+v+'">'+l+'</option>').join("")}
+opts("fc","Todas",cities.map(c=>[c,c]));
+opts("fg","Todos",[["F","Mujeres"],["M","Hombres"]]);
+opts("ft","Todos",Object.entries(T));
+opts("fz","Todas",SZ.map(s=>[s,s]));
+const val=i=>$(i).value;
+function sel(){const c=val("fc"),g=val("fg"),t=val("ft"),z=val("fz");
+return D.filter(r=>(!c||r[0]===c)&&(!g||r[1]===g)&&(!t||r[4]===t)&&(!z||r[2]===z))}
+function cnt(a,f){const m={};a.forEach(r=>{const k=f(r);m[k]=(m[k]||0)+1});return m}
+function draw(){
+const a=sel();$("cnt").textContent="Mostrando "+a.length+" de "+D.length+" colaboradores";
+const k=[["Colaboradores",a.length,"#404040"],["Camisas naranjas",a.filter(r=>r[4]==="G").length,"var(--or)"],
+["Camisas azules",a.filter(r=>"LSD".includes(r[4])).length,"var(--bl)"],["Valet parking (por confirmar)",a.filter(r=>r[4]==="V").length,"var(--gr)"],
+["Sin talla registrada",a.filter(r=>!r[2]).length,"#595959"]];
+$("kp").innerHTML=k.map(x=>'<div class="k" style="background:'+x[2]+'"><b>'+x[1]+'</b><span>'+x[0]+'</span></div>').join("");
+// ciudades
+const cc=cnt(a,r=>r[0]),mx=Math.max(1,...Object.values(cc));
+$("ch1").innerHTML=Object.entries(cc).sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0])).map(([c,n])=>
+'<div class="row'+(val("fc")===c?" on":"")+'" tabindex="0" role="button" data-c="'+c+'"><span>'+c+'</span><div class="tr"><i style="width:'+n/mx*100+'%;background:#595959"></i></div><span class="n">'+n+'</span></div>').join("")||"<p class='nt'>Sin resultados con estos filtros.</p>";
+document.querySelectorAll("#ch1 .row").forEach(e=>{const go=()=>{$("fc").value=$("fc").value===e.dataset.c?"":e.dataset.c;draw()};e.onclick=go;e.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();go()}}});
+// tallas apiladas
+const sizes=[...SZ,""];const tm={};a.forEach(r=>{const s=r[2];tm[s]=tm[s]||{G:0,B:0,V:0};tm[s][grp(r[4])]++});
+const tot=s=>tm[s]?tm[s].G+tm[s].B+tm[s].V:0,mt=Math.max(1,...sizes.map(tot));
+$("ch2").innerHTML=sizes.map(s=>{const m=tm[s]||{G:0,B:0,V:0},n=tot(s);
+return '<div class="row" style="cursor:default"><span>'+(s||"Sin talla")+'</span><div class="tr" style="width:'+n/mt*100+'%;min-width:'+(n?4:0)+'px"><i style="flex:'+m.G+';background:var(--or)"></i><i style="flex:'+m.B+';background:var(--bl)"></i><i style="flex:'+m.V+';background:var(--gr)"></i></div><span class="n">'+n+'</span></div>'}).join("");
+// género
+const gc=cnt(a,r=>r[1]),gm=Math.max(1,gc.F||0,gc.M||0);
+$("ch3").innerHTML=[["F","Mujeres"],["M","Hombres"]].map(([g,l])=>{const n=gc[g]||0;return '<div class="row" style="cursor:default"><span>'+l+'</span><div class="tr"><i style="width:'+n/gm*100+'%;background:#595959"></i></div><span class="n">'+n+' ('+(a.length?Math.round(n/a.length*100):0)+'%)</span></div>'}).join("");
+// tabla ciudad x talla
+$("th").innerHTML="<tr><th>Ciudad</th>"+[...SZ,"Sin talla"].map(s=>"<th>"+s+"</th>").join("")+"<th>Total</th></tr>";
+const cs=Object.keys(cc).sort((x,y)=>cc[y]-cc[x]||x.localeCompare(y)),ct={};
+$("tb").innerHTML=cs.map(c=>{const r=[...SZ,""].map(s=>a.filter(x=>x[0]===c&&x[2]===s).length);r.forEach((n,i)=>ct[i]=(ct[i]||0)+n);
+return "<tr><td>"+c+"</td>"+r.map(n=>"<td>"+(n||"–")+"</td>").join("")+"<td><b>"+cc[c]+"</b></td></tr>"}).join("");
+$("tf").innerHTML="<tr><td>Total</td>"+[...SZ,""].map((s,i)=>"<td>"+(ct[i]||0)+"</td>").join("")+"<td>"+a.length+"</td></tr>";
+// especiales
+const sp=a.filter(r=>r[4]!=="G").sort((x,y)=>"LSDV".indexOf(x[4])-"LSDV".indexOf(y[4])||x[0].localeCompare(y[0])||x[5].localeCompare(y[5]));
+$("sp").innerHTML=sp.map(r=>"<tr><td>"+r[5]+"</td><td>"+r[0]+"</td><td>"+T[r[4]]+'</td><td><span class="pill" style="background:'+COL[r[4]]+'">'+CN[r[4]]+"</span></td><td>"+(r[2]||"Sin talla")+"</td><td>"+(r[3]||"Sin talla")+"</td></tr>").join("")||'<tr><td colspan="6">Sin cargos especiales con estos filtros.</td></tr>';
+}
+["fc","fg","ft","fz"].forEach(i=>$(i).onchange=draw);
+$("rs").onclick=()=>{["fc","fg","ft","fz"].forEach(i=>$(i).value="");draw()};
+draw();
+</script></body></html>
